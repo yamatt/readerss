@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id>tag:theregister.co.uk,2005:feed/theregister.co.uk/</id>
+  <title>The Register</title>
+  <link rel="self" type="application/atom+xml" href="http://www.theregister.co.uk/headlines.atom"/>
+  <link rel="alternate" type="text/html" href="http://www.theregister.co.uk/"/>
+  <rights>Copyright © 2013, Situation Publishing</rights>
+  <author>
+    <name>Team Register</name>
+    <email>webmaster@theregister.co.uk</email>
+    <uri>http://www.theregister.co.uk/odds/about/contact/</uri>
+  </author>
+  <icon>http://www.theregister.co.uk/Design/graphics/icons/favicon.png</icon>
+  <subtitle>Biting the hand that feeds IT — sci/tech news and views for the world</subtitle>
+  <logo>http://www.theregister.co.uk/Design/graphics/Reg_default/The_Register_r.png</logo>
+  <updated>2013-05-01T10:59:50Z</updated>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/plusnet_asa_ruling_everyone_not_a_winner/</id>
+    <updated>2013-05-01T10:44:23Z</updated>
+    <author>
+      <name>Kelly Fiveash</name>
+      <uri>http://search.theregister.co.uk/?author=Kelly%20Fiveash</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/plusnet_asa_ruling_everyone_not_a_winner/"/>
+    <title type="html">Plusnet's 'Everyone's a winner' claim is a plus-sized whopper</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Watchdog slaps ISP for Del Boy-like tactics&lt;/h4&gt; &lt;p&gt;BT-owned ISP Plusnet misled would-be customers by inferring in a telly ad that its broadband service was available to "everyone", says a watchdog.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/bletchley_park_music/</id>
+    <updated>2013-05-01T10:24:17Z</updated>
+    <author>
+      <name>Jasper Hamill</name>
+      <uri>http://search.theregister.co.uk/?author=Jasper%20Hamill</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/bletchley_park_music/"/>
+    <title type="html">Give it up for Live 8-bit: Muso devs raise dosh for Bletchley Park kids</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Electronica album sales pumped into programming lessons&lt;/h4&gt; &lt;p&gt;&lt;strong&gt;Audio&lt;/strong&gt;  Synthesizer-loving programmers have released their very own electronica album to raise cash for kids' classes at Bletchley Park.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/quid_a_day_wednesday/</id>
+    <updated>2013-05-01T09:59:19Z</updated>
+    <author>
+      <name>Lester Haines</name>
+      <uri>http://search.theregister.co.uk/?author=Lester%20Haines</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/quid_a_day_wednesday/"/>
+    <title type="html">Quid-a-day nosh challenge hack forms foraging party</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Can Mother Nature supplement meagre diet?&lt;/h4&gt; &lt;p&gt;It's been a tough winter here in the mountains of central Spain, so Mother Nature isn't lending much of a hand as I attempt to sustain myself spending just &lt;a target="_blank" href="https://www.livebelowtheline.com/uk-why-1"&gt;£1 a day&lt;/a&gt; for nosh in the "&lt;a target="_blank" href="https://www.livebelowtheline.com/uk?lang=en"&gt;Live Below the Line&lt;/a&gt;" challenge.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/speaking_in_tech_episode_56/</id>
+    <updated>2013-05-01T09:30:07Z</updated>
+    <author>
+      <name>Team Register</name>
+      <uri>http://search.theregister.co.uk/?author=Team%20Register</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/speaking_in_tech_episode_56/"/>
+    <title type="html">Speaking in Tech: Explicit vid reveals hot tech stars in LIVE STRIP SHOW</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Topless VP shows some skin after losing 'humiliating bet'&lt;/h4&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/netsuite_becoming_like_sap/</id>
+    <updated>2013-05-01T09:05:07Z</updated>
+    <author>
+      <name>Gavin Clarke</name>
+      <uri>http://search.theregister.co.uk/?author=Gavin%20Clarke</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/netsuite_becoming_like_sap/"/>
+    <title type="html">'I still get on the phone for a $5k deal' - NetSuite CEO's anti-SAP mission</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Big cheese spells out tough world of Salesforce and other enterprise tech rivals&lt;/h4&gt; &lt;p&gt;&lt;strong&gt;Interview&lt;/strong&gt;  Californian software giant Salesforce has been an unstoppable force in Software as a Service (SaaS) for 14 years. It pulled in $3.05bn in revenue last year, and just booted rival enterprise tech maker SAP from its slot as the world's number-one customer relationship management software (CRM) company.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/indemand_ancient_it_skills/</id>
+    <updated>2013-05-01T08:37:02Z</updated>
+    <author>
+      <name>Dominic Connor</name>
+      <uri>http://search.theregister.co.uk/?author=Dominic%20Connor</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/indemand_ancient_it_skills/"/>
+    <title type="html">Is the IT industry short on Cobolers? This could be your lucky day</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Sometimes a CV needs a few fossils&lt;/h4&gt; &lt;p&gt;Let's make one thing clear: your previous jobs are not the reason why you were hired. You were hired for having skills that bosses need.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/falconstore_q1_2013/</id>
+    <updated>2013-05-01T08:03:11Z</updated>
+    <author>
+      <name>Chris Mellor</name>
+      <uri>http://search.theregister.co.uk/?author=Chris%20Mellor</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/falconstore_q1_2013/"/>
+    <title type="html">FalconStor on 13th quarterly loss: 'Unpredictable' OEM dragged us down</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;And the previous 12 quarters?&lt;/h4&gt; &lt;p&gt;FalconStor has blamed "unpredictable performance" from one of its biggest Chinese OEM partners for the dent in its first quarter revenues. It has now totted up 13 loss-making quarters - although last quarter saw a boost in revenues - and the storage virtualisation supplier's lot is not a happy one.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/workload_event/</id>
+    <updated>2013-05-01T07:43:09Z</updated>
+    <author>
+      <name>David Gordon</name>
+      <uri>http://search.theregister.co.uk/?author=David%20Gordon</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/workload_event/"/>
+    <title type="html">Workload placement in a hybrid world</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;It's where you put it that counts&lt;/h4&gt; &lt;p&gt;&lt;strong&gt;The Register live&lt;/strong&gt;  If you ask your Oracle team which infrastructure they want their databases and apps running across, they’ll tell you dedicated. Heaven forbid their IO is interfered with by a lagging virtual infrastructure.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/brocade_sdn_news/</id>
+    <updated>2013-05-01T07:31:04Z</updated>
+    <author>
+      <name>Chris Mellor</name>
+      <uri>http://search.theregister.co.uk/?author=Chris%20Mellor</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/brocade_sdn_news/"/>
+    <title type="html">Brocade plugs in new OpenStack switches for Grizzly</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Also whisks sheet off new software defined networking toys&lt;/h4&gt; &lt;p&gt;Brocade has plunged deeper into the software-defined networks (SDN) pool with a couple of virtual networking products and a switch software revision.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/iot_messaging/</id>
+    <updated>2013-05-01T07:03:05Z</updated>
+    <author>
+      <name>Bill Ray</name>
+      <uri>http://search.theregister.co.uk/?author=Bill%20Ray</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/iot_messaging/"/>
+    <title type="html">Facebook Messenger tech to glue 50bn-strong Internet of Stuff</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Machine blabber protocol backed by Cisco, IBM et al&lt;/h4&gt; &lt;p&gt;A communications protocol for the Internet of Things - the posh name for a future global network of 50 billion interconnected gadgets - has been chosen by a top standards body.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/adobe_says_no/</id>
+    <updated>2013-05-01T06:37:10Z</updated>
+    <author>
+      <name>Trevor Pott</name>
+      <uri>http://search.theregister.co.uk/?author=Trevor%20Pott</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/adobe_says_no/"/>
+    <title type="html">Not cool, Adobe: Give the Ninite guys a job, not the middle finger</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Top toolmaker told to stop installing crapware-free Flash&lt;/h4&gt; &lt;p&gt;&lt;strong&gt;Sysadmin blog&lt;/strong&gt;  Adobe wants the ability to easily roll out Flash updates removed from Ninite, the sysadmin Swiss army knife. I'm going to explain why this is a terrible thing.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/review_panasonic_toughpad_fz_g1_windows_8_pro_tablet/</id>
+    <updated>2013-05-01T06:03:11Z</updated>
+    <author>
+      <name>Bob Dormon</name>
+      <uri>http://search.theregister.co.uk/?author=Bob%20Dormon</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/review_panasonic_toughpad_fz_g1_windows_8_pro_tablet/"/>
+    <title type="html">Review: Panasonic Toughpad FZ-G1 WinPro 8 tablet</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Fancy a shower with your fondleslab? Or booting it down the stairs?&lt;/h4&gt; &lt;p&gt;&lt;strong&gt;Vid&lt;/strong&gt;  In the UK, Panasonic is not known as a high-street PC player - but the company’s Tough range of products makes quite an impression in the world of business.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/oracle_home_storage_cloud/</id>
+    <updated>2013-05-01T05:26:09Z</updated>
+    <author>
+      <name>Simon Sharwood</name>
+      <uri>http://search.theregister.co.uk/?author=Simon%20Sharwood</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/oracle_home_storage_cloud/"/>
+    <title type="html">Oracle offers recipe for free DIY storage cloud</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;How far will the virtual ZFS fun scale?&lt;/h4&gt; &lt;p&gt;World+dog may be busy preparing Dropbox clones, but Oracle seems to think a better idea is to build your own domestic cloud storage rig and has therefore published a recipe for doing so.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/climate_change_causes_prostitution/</id>
+    <updated>2013-05-01T05:06:07Z</updated>
+    <author>
+      <name>Lewis Page</name>
+      <uri>http://search.theregister.co.uk/?author=Lewis%20Page</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/climate_change_causes_prostitution/"/>
+    <title type="html">CLIMATE CHANGE forces women into PROSTITUTION - US politicians</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Is there &lt;i&gt;anything&lt;/i&gt; bad it doesn't cause?&lt;/h4&gt; &lt;p&gt;A group of American politicians has introduced a resolution into Congress saying that climate change (among many other bad things it does) forces women into prostitution, and that as a result the USA should use "gender sensitive frameworks" in battling the scourge of global warming.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/heard_island_lava_flow/</id>
+    <updated>2013-05-01T04:26:11Z</updated>
+    <author>
+      <name>Simon Sharwood</name>
+      <uri>http://search.theregister.co.uk/?author=Simon%20Sharwood</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/heard_island_lava_flow/"/>
+    <title type="html">Oz volcano's lava lake spills from crater</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Steamed walrus, anyone?&lt;/h4&gt; &lt;p&gt;Australia's only active volcano is rumbling fiercely, with new NASA photos revealing its lava lake has overflowed its crater.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/china_leases_satellite_pentagon/</id>
+    <updated>2013-05-01T04:04:50Z</updated>
+    <author>
+      <name>Phil Muncaster</name>
+      <uri>http://search.theregister.co.uk/?author=Phil%20Muncaster</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/china_leases_satellite_pentagon/"/>
+    <title type="html">Red faces as Pentagon leases Chinese satellite</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;It's ok, we've added 'additional transmission security'&lt;/h4&gt; &lt;p&gt;US lawmakers are up in arms after it emerged that the Pentagon has leased a Chinese commercial satellite to support non-classified communications with its African bases.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/linux_kernel_3_9/</id>
+    <updated>2013-05-01T03:23:24Z</updated>
+    <author>
+      <name>Richard Chirgwin</name>
+      <uri>http://search.theregister.co.uk/?author=Richard%20Chirgwin</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/linux_kernel_3_9/"/>
+    <title type="html">Linux kernel 3.9 lands</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Power management, new processors, SSD caching and more&lt;/h4&gt; &lt;p&gt;Linus Torvalds has unleashed version 3.9 of the Linux kernel.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/ip_cameras_with_dumb_vulns/</id>
+    <updated>2013-05-01T01:51:43Z</updated>
+    <author>
+      <name>Richard Chirgwin</name>
+      <uri>http://search.theregister.co.uk/?author=Richard%20Chirgwin</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/ip_cameras_with_dumb_vulns/"/>
+    <title type="html">Cameras leak credentials, live video</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;D-Link scrambles upgrade, Vivotek silent says Core Sec&lt;/h4&gt; &lt;p&gt;D-Link and Vivotek have submitted their entries for “dumbest security vulnerability of 2013”, with Core Security turning up a variety of daft bugs in their IP cameras, including hard-coded backdoor passwords.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/amd_huma/</id>
+    <updated>2013-05-01T01:17:07Z</updated>
+    <author>
+      <name>Rik Myslewski</name>
+      <uri>http://search.theregister.co.uk/?author=Rik%20Myslewski</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/amd_huma/"/>
+    <title type="html">AMD reveals potent parallel processing breakthrough</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Upcoming Kaveri processor will drink from shared-memory Holy Grail&lt;/h4&gt; &lt;p&gt;AMD has released details on its implementation of The Next Big Thing in processor evolution, and in the process has unleashed the TNBT of acronyms: the AMD APU (CPU+GPU) HSA hUMA.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/sgi_q3_f2013_numbers/</id>
+    <updated>2013-05-01T01:12:48Z</updated>
+    <author>
+      <name>Timothy Prickett Morgan</name>
+      <uri>http://search.theregister.co.uk/?author=Timothy%20Prickett%20Morgan</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/sgi_q3_f2013_numbers/"/>
+    <title type="html">SGI tax bennies push bigger profit in Q1</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Wraps up LMDs of profit destruction, shows decent sales growth&lt;/h4&gt; &lt;p&gt;Jorge Titinger, the CEO who was brought into Silicon Graphics last year to clean up the mess made by $87m in low-margin deals that wrecked the company's bottom line for a few quarters, is probably breathing a little easier now that the most recent quarter has ended. Not just because revenues were up, but because the remaining $50m in those LMDs of profit destruction have been booked.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/cisco_gig_wifi_in_the_wild/</id>
+    <updated>2013-05-01T01:04:22Z</updated>
+    <author>
+      <name>Richard Chirgwin</name>
+      <uri>http://search.theregister.co.uk/?author=Richard%20Chirgwin</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/cisco_gig_wifi_in_the_wild/"/>
+    <title type="html">Cisco clambers aboard gig Wi-Fi bandwagon</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Product catapult loaded with 802.11ac kit&lt;/h4&gt; &lt;p&gt;Cisco has joined the growing list of vendors putting the 802.11ac “gigabit WiFi” standard into live kit, launching a “Wave 1” module for it Aironet 3600 series of access points, and promising “Wave 2” support in a future upgrade module.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/cloud_vendor_marketing/</id>
+    <updated>2013-05-01T01:03:28Z</updated>
+    <author>
+      <name>Jack Clark</name>
+      <uri>http://search.theregister.co.uk/?author=Jack%20Clark</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/cloud_vendor_marketing/"/>
+    <title type="html">Is it me or did cloud marketing suddenly get really weird?</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;PR bods are going ga-ga on cloudy fumes&lt;/h4&gt; &lt;p&gt;&lt;strong&gt;Comment&lt;/strong&gt;  As cloud computing shakes up the IT industry, marketing departments are going into overdrive attempting to somehow – no, anyhow – gain what they call "traction." And it's starting to get weird.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/iphone_one_support_ends/</id>
+    <updated>2013-05-01T00:43:40Z</updated>
+    <author>
+      <name>Simon Sharwood</name>
+      <uri>http://search.theregister.co.uk/?author=Simon%20Sharwood</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/iphone_one_support_ends/"/>
+    <title type="html">Apple to end support for original iPhone: report</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;RIP iPhone One, 2007-2013&lt;/h4&gt; &lt;p&gt;Support for Apple's original iPhone will end on June 11, according to a &lt;a target="_blank" href="http://9to5mac.com/2013/04/29/original-iphone-will-soon-reach-obsolete-status-in-apple-retail-stores/"&gt;report&lt;/a&gt; from &lt;i&gt;9 to 5 Mac&lt;/i&gt; which got its hands on an advisory (&lt;a target="_blank" href="http://9to5mac.com/2013/04/29/original-iphone-will-soon-reach-obsolete-status-in-apple-retail-stores/"&gt;JPG&lt;/a&gt;) sent to Apple shops advising of products the fruity company will no longer support.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/google_glass_security_nightmare/</id>
+    <updated>2013-05-01T00:20:48Z</updated>
+    <author>
+      <name>Neil McAllister</name>
+      <uri>http://search.theregister.co.uk/?author=Neil%20McAllister</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/google_glass_security_nightmare/"/>
+    <title type="html">Ultra-hackable Google Glass could be a security nightmare</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Easy root access opens spyware floodgates&lt;/h4&gt; &lt;p&gt;Google's high-tech Glass headsets might be a gadget enthusiast's dream, but in their current form they're far too vulnerable to malicious hacking, according to one developer who has had access to the devices.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/05/01/opportunity_stuck_standby_mode_mars/</id>
+    <updated>2013-05-01T00:09:04Z</updated>
+    <author>
+      <name>Iain Thomson</name>
+      <uri>http://search.theregister.co.uk/?author=Iain%20Thomson</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/05/01/opportunity_stuck_standby_mode_mars/"/>
+    <title type="html">Opportunity rover stuck in standby mode after Martian blackout</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Have they tried turning it off and then on again?&lt;/h4&gt; &lt;p&gt;NASA is trying to reactivate its Martian rover Opportunity after it switched itself into standby mode during a communications quiet period, but engineers have had no luck as yet at restoring control.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/cray_q1_2012_numbers/</id>
+    <updated>2013-04-30T23:29:26Z</updated>
+    <author>
+      <name>Timothy Prickett Morgan</name>
+      <uri>http://search.theregister.co.uk/?author=Timothy%20Prickett%20Morgan</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/cray_q1_2012_numbers/"/>
+    <title type="html">Cray peddles more iron than expected in Q1</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Not enough to keep it from booking a loss, though&lt;/h4&gt; &lt;p&gt;It is tough to find a choppier business than the supercomputer market, and Cray CEO Peter Ungaro had to remind Wall Street once again to not judge the company on a single quarter, and particularly on the first quarter that it has just turned in.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/viscous_experiment_at_fever_pitch/</id>
+    <updated>2013-04-30T23:05:12Z</updated>
+    <author>
+      <name>Richard Chirgwin</name>
+      <uri>http://search.theregister.co.uk/?author=Richard%20Chirgwin</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/viscous_experiment_at_fever_pitch/"/>
+    <title type="html">One of the world's oldest experiments crawls towards a fall</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Fever pitch excitement at planet's most boring webcam&lt;/h4&gt; &lt;p&gt;Grab a coffee, fire up the browser, open the webcam, and wait: sometime soon – perhaps within days – a drop of pitch will fall, and for the first time, the event might actually have spectators.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/alibaba_weibo_stake/</id>
+    <updated>2013-04-30T21:51:10Z</updated>
+    <author>
+      <name>Brid-Aine Parnell</name>
+      <uri>http://search.theregister.co.uk/?author=Brid-Aine%20Parnell</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/alibaba_weibo_stake/"/>
+    <title type="html">Alibaba splurges half a billion on a slice of 'Chinese Twitter'</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;E-tailer sees commercial opportunity in Weibo&lt;/h4&gt; &lt;p&gt;Alibaba has moved into social media with a $586m splurge on an 18 per cent stake in China's Twitter, Weibo.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/esa_retires_herschel/</id>
+    <updated>2013-04-30T21:37:52Z</updated>
+    <author>
+      <name>Iain Thomson</name>
+      <uri>http://search.theregister.co.uk/?author=Iain%20Thomson</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/esa_retires_herschel/"/>
+    <title type="html">ESA retires Herschel space telescope as too hot to handle</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Lonely star-spotter stranded 1.5 million km from Earth&lt;/h4&gt; &lt;p&gt;The European Space Agency has formally retired the Herschel space telescope after nearly four years of operation, and has placed it in a parking orbit that will keep it out of Earth's way.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/amazon_aws_certification/</id>
+    <updated>2013-04-30T21:24:05Z</updated>
+    <author>
+      <name>Jack Clark</name>
+      <uri>http://search.theregister.co.uk/?author=Jack%20Clark</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/amazon_aws_certification/"/>
+    <title type="html">Amazon goes legit with cloud certification plan</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;'Enterprisey enough for ya?' bellow Bezos &amp;amp; Co.&lt;/h4&gt; &lt;p&gt;Watch out Microsoft, IBM, Cisco, Dell, and HP. There's a new reassuringly dull certificate in town, and it's coming for your devs.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/budweiser_buddy_cup/</id>
+    <updated>2013-04-30T21:09:16Z</updated>
+    <author>
+      <name>Neil McAllister</name>
+      <uri>http://search.theregister.co.uk/?author=Neil%20McAllister</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/budweiser_buddy_cup/"/>
+    <title type="html">Budweiser's bonkable Buddy Cup brings Facebook to the pub</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Toast now, stalk later – no convo required&lt;/h4&gt; &lt;p&gt;Are you spending so much time on Facebook that the prospect of actually going out and socializing has become a little unnerving? Don't worry; mega-brewer Budweiser has got you covered, with a new beverage cup that helps merge the physical and online worlds.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/cloudera_releases_impala_sql_for_hadoop/</id>
+    <updated>2013-04-30T19:43:50Z</updated>
+    <author>
+      <name>Timothy Prickett Morgan</name>
+      <uri>http://search.theregister.co.uk/?author=Timothy%20Prickett%20Morgan</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/cloudera_releases_impala_sql_for_hadoop/"/>
+    <title type="html">Cloudera revs up Impala SQL for Hadoop</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Big-data elephant to pronk like a gazelle - or roar like a Chevy&lt;/h4&gt; &lt;p&gt;Commercial Hadoop distributor Cloudera is first out of the gate with a true SQL layer that sits atop Hadoop.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/government_fines_wiretap_federal/</id>
+    <updated>2013-04-30T18:29:34Z</updated>
+    <author>
+      <name>Iain Thomson</name>
+      <uri>http://search.theregister.co.uk/?author=Iain%20Thomson</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/government_fines_wiretap_federal/"/>
+    <title type="html">Feds want to fine companies that refuse wiretap requests</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Apparatchiks whine that technology's making it too tough&lt;/h4&gt; &lt;p&gt;Draft legislation to impose fines on companies that refuse to provide wiretap facilities to US federal agents is in the planning stages, government officials have told the &lt;i&gt;Washington Post&lt;/i&gt; under condition of anonymity.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/blackberry_heins_on_tabs_demise/</id>
+    <updated>2013-04-30T18:13:49Z</updated>
+    <author>
+      <name>Paul Kunert</name>
+      <uri>http://search.channelregister.co.uk/?author=Paul%20Kunert</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.channelregister.co.uk/2013/04/30/blackberry_heins_on_tabs_demise/"/>
+    <title type="html">BlackBerry CEO: Tablets will be dead in 5 years</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;PlayBook, anyone?&lt;/h4&gt; &lt;p&gt;BlackBerry chief Thorsten Heins reckons slabs will be dead in half a decade, by which point his firm will be the front runner in mobile computing.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/fujitsu_f2012_numbers_spansion_sale/</id>
+    <updated>2013-04-30T18:12:19Z</updated>
+    <author>
+      <name>Timothy Prickett Morgan</name>
+      <uri>http://search.theregister.co.uk/?author=Timothy%20Prickett%20Morgan</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/fujitsu_f2012_numbers_spansion_sale/"/>
+    <title type="html">Fujitsu sells off microcontroller and analog chip biz to Spansion</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Japanese giant books a loss in 2012, optimistic about 2013&lt;/h4&gt; &lt;p&gt;It's been a busy day at Japanese IT giant Fujitsu, with the company reporting its financial results for its fiscal 2012 year ending in March (that's not a typo) and also announcing that it has spun off its microcontroller and analog device business to the flash-memory maker Spansion.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/mongodb_goes_cloud/</id>
+    <updated>2013-04-30T18:00:09Z</updated>
+    <author>
+      <name>Jack Clark</name>
+      <uri>http://search.theregister.co.uk/?author=Jack%20Clark</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/mongodb_goes_cloud/"/>
+    <title type="html">MongoDB gets incremental restores ... for a price</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;10Gen cranks monetization handle to lift MongoDB into the cloud&lt;/h4&gt; &lt;p&gt;MongoDB steward 10Gen is trying to squeeze money out of heavy users of the open source NoSQL database, and has set aside almost a petabyte of raw storage to deal with initial demand for a new backup-and-restore service.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/apple_bond_issue/</id>
+    <updated>2013-04-30T17:27:06Z</updated>
+    <author>
+      <name>Jasper Hamill</name>
+      <uri>http://search.theregister.co.uk/?author=Jasper%20Hamill</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/apple_bond_issue/"/>
+    <title type="html">Apple: You thought Google dodged taxes? Get a load of THIS</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;'The market is going to be all over it...'&lt;/h4&gt; &lt;p&gt;Apple has embarked on one of the biggest bond offerings in history as part of a ploy to avoid tax.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/intel_backs_softbank_sprint_bid/</id>
+    <updated>2013-04-30T16:13:07Z</updated>
+    <author>
+      <name>Brid-Aine Parnell</name>
+      <uri>http://search.theregister.co.uk/?author=Brid-Aine%20Parnell</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/intel_backs_softbank_sprint_bid/"/>
+    <title type="html">Intel supremo backs biz pal SoftBank's billion-dollar bid for Sprint</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Otellini: Japanese have made a 'very compelling' offer&lt;/h4&gt; &lt;p&gt;Intel chief Paul Otellini has told a US regulator that he backs SoftBank's bid for Sprint rather than Dish Network's counter-offer.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/bechtle_direct_uk_numbers/</id>
+    <updated>2013-04-30T15:34:09Z</updated>
+    <author>
+      <name>Paul Kunert</name>
+      <uri>http://search.channelregister.co.uk/?author=Paul%20Kunert</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.channelregister.co.uk/2013/04/30/bechtle_direct_uk_numbers/"/>
+    <title type="html">Bechtle's double digit sales, profit hike in UK? Satisfactory, says parent firm</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Wait a sec, isn't there a Euro meltdown on?&lt;/h4&gt; &lt;p&gt;A double digit hike in sales and profits at the Brit arm of reselling powerhouse Bechtle was merely described as "satisfactory" by its German owner.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/bt_o2_4g/</id>
+    <updated>2013-04-30T15:04:44Z</updated>
+    <author>
+      <name>Jasper Hamill</name>
+      <uri>http://search.theregister.co.uk/?author=Jasper%20Hamill</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/bt_o2_4g/"/>
+    <title type="html">BT and O2 ink deal to build mega 4G network</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Prodigal child needs paternal backend support&lt;/h4&gt; &lt;p&gt;BT has reached out to its prodigal child O2 and offered to help build it a flashy new 4G network - for a few hundred million quid.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/northamber_qbe/</id>
+    <updated>2013-04-30T14:27:11Z</updated>
+    <author>
+      <name>Paul Kunert</name>
+      <uri>http://search.channelregister.co.uk/?author=Paul%20Kunert</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.channelregister.co.uk/2013/04/30/northamber_qbe/"/>
+    <title type="html">Credit safety net ripped from under elder IT distie Northamber</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Sliding trade at Surrey-based wholesaler fingered&lt;/h4&gt; &lt;p&gt;QBE Insurance has removed entire lines of trade credit insurance on Surrey-based distributor Northamber, &lt;i&gt;The Channel&lt;/i&gt; can reveal.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/apple_samsung_damages_trial_date/</id>
+    <updated>2013-04-30T14:04:11Z</updated>
+    <author>
+      <name>Brid-Aine Parnell</name>
+      <uri>http://search.theregister.co.uk/?author=Brid-Aine%20Parnell</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/apple_samsung_damages_trial_date/"/>
+    <title type="html">Judge sets the date for Patent Smackdown 2: The Damages</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Apple and Samsung go toe-to-toe again in November&lt;/h4&gt; &lt;p&gt;US Judge Lucy Koh has told Apple and Samsung they'll be back in court in November to try to decide whether the fruity firm deserves an extra $450m damages for alleged patent infringement.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/huawei_zhengfei_no_dynasty/</id>
+    <updated>2013-04-30T13:29:10Z</updated>
+    <author>
+      <name>Bill Ray</name>
+      <uri>http://search.theregister.co.uk/?author=Bill%20Ray</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/huawei_zhengfei_no_dynasty/"/>
+    <title type="html">Huawei boss: Next CEO won't be member of my family</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Company won't go public either, Ren confirms in leaked internal email&lt;/h4&gt; &lt;p&gt;The Chinese telecoms giant won't be listing itself on any public exchange, and the founder's kids won't be taking up the reins either - as their dad reckons they're not up to the job.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/softlayer_basho/</id>
+    <updated>2013-04-30T13:00:09Z</updated>
+    <author>
+      <name>Jack Clark</name>
+      <uri>http://search.theregister.co.uk/?author=Jack%20Clark</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/softlayer_basho/"/>
+    <title type="html">SoftLayer hoists Riak NoSQL datastore onto its cloud</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Basho hopes to mine rich seam of cloudy dev gold&lt;/h4&gt; &lt;p&gt;Open source NoSQL datastore specialist Basho has teamed up with SoftLayer to hoist the free and paid-for versions of Riak into the cloud.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/universal_credit_dwp_browser_compatibility_snafu/</id>
+    <updated>2013-04-30T12:44:29Z</updated>
+    <author>
+      <name>Gareth Corfield</name>
+      <uri>http://search.theregister.co.uk/?author=Gareth%20Corfield</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/universal_credit_dwp_browser_compatibility_snafu/"/>
+    <title type="html">Brits on benefits: 'Dole office site only works on PCs over 10 YEARS OLD'</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;UK.gov snubs blind, disabled and pensioners&lt;/h4&gt; &lt;p&gt;Benefits claimants signing up for disability living allowance online are told they cannot use modern browsers, smartphones or even Macs.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/yahoo_original_tv_shows/</id>
+    <updated>2013-04-30T12:19:05Z</updated>
+    <author>
+      <name>Brid-Aine Parnell</name>
+      <uri>http://search.theregister.co.uk/?author=Brid-Aine%20Parnell</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/yahoo_original_tv_shows/"/>
+    <title type="html">Yahoo! tries! to! tempt! TV! crowd! with! tiny! dick!</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Original comedy telly and sex-talking celebs coming to the Purple Palace&lt;/h4&gt; &lt;p&gt;Yahoo! is taking a leaf out of Netflix and Amazon's books and beefing up its media offerings with six original TV shows, including one about a bite-sized private detective. It has also partnered up with pro-wrestling outfit WWE in a bid to lure in internet TV watchers.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/twitter_lettkr_hacl/</id>
+    <updated>2013-04-30T12:05:05Z</updated>
+    <author>
+      <name>Jasper Hamill</name>
+      <uri>http://search.theregister.co.uk/?author=Jasper%20Hamill</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/twitter_lettkr_hacl/"/>
+    <title type="html">Oi, journos. Try NOT to get hacked again. Lots of love, Twitter</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Hackers have painted a bullseye on hacks' heads, chat site warns&lt;/h4&gt; &lt;p&gt;Twitter has warned news agencies that hackers could strike again unless journalists take basic precautions - like using a decent password.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/storm_saturn_space/</id>
+    <updated>2013-04-30T11:47:04Z</updated>
+    <author>
+      <name>Jasper Hamill</name>
+      <uri>http://search.theregister.co.uk/?author=Jasper%20Hamill</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/storm_saturn_space/"/>
+    <title type="html">2,000km-wide Eye-of-Sauron MONSTER hurricane spotted on Saturn</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Cassini craft spots massive swirler atop planet's north pole&lt;/h4&gt; &lt;p&gt;Stargazing NASA scientists have &lt;a href="http://www.nasa.gov/mission_pages/cassini/whycassini/cassini20130429.html"&gt;snapped&lt;/a&gt; an image of a massive hurricane on Saturn whose vortex is 20 times larger than the average size of the eye of its earthly cousins.*…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/cern_recreates_first_webpage/</id>
+    <updated>2013-04-30T11:24:17Z</updated>
+    <author>
+      <name>Brid-Aine Parnell</name>
+      <uri>http://search.theregister.co.uk/?author=Brid-Aine%20Parnell</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.theregister.co.uk/2013/04/30/cern_recreates_first_webpage/"/>
+    <title type="html">Is this the first ever web page? If not, CERN would like to know</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;Eggheads recreate what could be the original website&lt;/h4&gt; &lt;p&gt;Boffinry nerve-centre CERN has attempted to recreate the very first website to mark 20 years since the official launch of the World Wide Web.…&lt;/p&gt;</summary>
+  </entry>
+  <entry>
+    <id>tag:theregister.co.uk,2005:story/2013/04/30/salesforce_worlds_biggest_crm/</id>
+    <updated>2013-04-30T11:06:05Z</updated>
+    <author>
+      <name>Gavin Clarke</name>
+      <uri>http://search.channelregister.co.uk/?author=Gavin%20Clarke</uri>
+    </author>
+    <link rel="alternate" type="text/html" href="http://go.theregister.com/feed/www.channelregister.co.uk/2013/04/30/salesforce_worlds_biggest_crm/"/>
+    <title type="html">Salesforce boots SAP from customer-wrangling software top slot</title>
+    <summary type="html" xml:base="http://www.theregister.co.uk/">&lt;h4&gt;SaaS outsold on-premises in 2012, says Gartner&lt;/h4&gt; &lt;p&gt;Software-as-a-service provider Salesforce has beaten on-premises incumbents to become the biggest provider of customer relationship management (CRM) software.…&lt;/p&gt;</summary>
+  </entry>
+</feed>
