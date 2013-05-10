@@ -2,12 +2,14 @@
  
 import threading
 from threading import Event
-from Queue import Queue, Full
+from Queue import Queue, Full as QueueFull, Empty as QueueEmpty
+from time import sleep
 
 from robotsparser import RobotsTXTParser
 
-from models import Feed
+from models import Feed, Entry
 from models.interface import Interface
+
 
 import settings
 
@@ -46,7 +48,11 @@ class FeedGrab(threading.Thread):
         max_wait=timedelta(minutes=settings.MAX_ACCESS_WAIT)
         min_wait=timedelta(minutes=settings.MIN_ACCESS_WAIT)
         while not self.stop_flag.is_set():
-            feed = self.feed_queue.get()
+            try:
+                # arbritrary timeout to prevent total blocking and lack of exiting
+                feed = self.feed_queue.get(timeout=3)
+            except QueueEmpty:
+                pass
             if feed:
                 try:
                     # worth checking yet?
@@ -85,37 +91,26 @@ class FeedGrab(threading.Thread):
                                             new_feed.minimum_wait = settings.MIN_ACCESS_WAIT
                                        
                                     # write feed
-                                    new_feed_message = DatabaseWriterMessage(DatabaseWriterMessage.FEED, new_feed)
-                                    self.database_queue.put(new_feed_message)
+                                    self.database_queue.put(new_feed)
                                     # write entries
                                     for entry in new_feed.entries:
-                                        entry_message = DatabaseWriterMessage(DatabaseWriterMessage.ENTRY, entry)
+                                        self.database_queue.put(entry)
                                         
                                             
                 except Exception e:
                     feed.errors+=1
-                    db_message = DatabaseWriterMessage(DatabaseWriterMessage.FEED, feed)
-                    self.database_queue.put(db_message)
-                
-class DatabaseWriterMessage(object):
-    """
-    
-    """
-    FEED=0
-    ENTRY=1
-    def __init__(self, data_type, data):
-        """
-        """
-        self.data_type = data_type
-        self.data = data
+                    self.database_queue.put(feed)
                 
 class DatabaseWriter(threading.Thread):
     """
-    
+    This handles database writes from the feed grabber.
     """
     def __init__(self, database_engine, connection_string):
         """
-        
+        Set up the connection to the database, the queues and writer
+        thread.
+        :param database_engine: the name of the engine to use.
+        :param connection_string: the options for the database engine
         """
         super(DatabaseWriter, self).__init__(name=self.__class__.__name__)
         self.database = Interface(database_engine, connection_string)
@@ -124,29 +119,43 @@ class DatabaseWriter(threading.Thread):
         
     def run(self):
         """
-        
+        Writes messages in batches from the queue. It sleeps 3 seconds
+        for messages to build up in the queue before writing so that a
+        lot of  messages can be pulled out and written as a bulk write.
+        We don't mind it being too lossy here because the at the next
+        iteration anything missing will be pulled in again.
         """
         while not self.stop_flag.is_set():
-            message = self.database_queue.get()
-            if message:
-                if message.data_type==DatabaseWriterMessage.FEED:
-                    self.database.update_feed(message.data)
-                elif message.data_type==DatabaseWriterMessage.ENTRY:
-                    self.database.add_entry(message.data)
+            data = []
+            while not self.database_queue.empty():
+                result = self.database_queue.get_nowait()
+                data.append(result)
+            if len(data) > 0:
+                for item in data:
+                    if item.TYPE == Feed.TYPE:
+                        self.database.update_feed(item)
+                    elif item.TYPE == Entry.TYPE:
+                        self.database.add_entry(item)
+                
+            # waits 3 seconds for the queue to be populated
+            sleep(3)
     
     def stop(self):
         """
-        
+        Tells the thread to die.
         """
         self.stop_flag.set()
                             
 class FeedGrabManager(object):
     """
-    
+    Handles the multiple feed grabber threads.
     """
     def __init__(self, threads, database_queue):
         """
-        
+        Sets up the feed grabber threads.
+        :param threads:an integer for the number of threads to generate.
+        :param database_queue:the queue object used to send items to be
+        writen to the database.
         """
         self.threads = []
         self.feed_queue = Queue(maxsize=threads) # max size = number of threads means that there will never be any more in the queue than the threads can process
@@ -160,36 +169,42 @@ class FeedGrabManager(object):
             
         def start_threads(self):
             """
-            
+            Start all threads.
             """
             for thread in self.threads:
                 thread.start()
             
         def stop_threads(self):
             """
-            
+            Set the flag to tell the threads to stop.
             """
             self.stop_flag.set()
             
         def put_feed(self, feed):
             """
-            
+            A shorthand function to put feeds on the queue. The queue
+            used here is small so that it doesn't take up too much
+            memory. It also guarentees that the feed will be put on the
+            queue. This queue is kept populated with feed entries so
+            that the threads keep looking for new items.
+            :param feed: the feed to be processed.
             """
             inserted = False
             while not inserted:
                 try:
                     self.feed_queue.put(feed, True, 60)
                     inserted = True
-                except Full:
+                except QueueFull:
                     pass
 
 class ManageGrabber(object):
     """
-    
+    Handles the integration of the entire process.
     """
     def __init__(self):
         """
-        
+        Sets up the database writer, necessary queues and the feed
+        grabber manager.
         """
         self.db_writer_thread = DatabaseWriter(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING)
         db_queue = self.db_thread.db_writer_thread
@@ -197,16 +212,9 @@ class ManageGrabber(object):
         self.database = Interface(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING)
         self.stop_flag = threading.Event()
         
-    def _start(self):
-        """
-        
-        """
-        self.db_thread.start()
-        self.grab_manager.start()
-        
     def stop(self):
         """
-        
+        Stops the threads. Can only be called once start has exited.
         """
         self.db_thread.stop()
         self.grab_manager.stop()
@@ -214,12 +222,14 @@ class ManageGrabber(object):
         
     def start(self):
         """
-        Grabs feeds from the database and puts them on the feed queue
-        so they can be checked for updates.
+        Starts the threads off then grabs feeds from the database and
+        puts them on the feed queue so they can be checked for updates.
         """
+        self.db_thread.start()
+        self.grab_manager.start()
         while not self.stop_flag.is_set():
             for feed in self.database.get_all_feeds():
-                self.grab_manager.put(feed)
+                self.grab_manager.put_feed(feed)
         
 if __name__ == "__main__":
     mg = ManageGrabber()

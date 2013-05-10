@@ -11,6 +11,7 @@ class Feed(object):
     """
     Represents a RSS/Atom feed.
     """
+    TYPE="feed"
     @classmethod
     def from_url(cls, url):
         """
@@ -64,6 +65,7 @@ class Entry(object):
     """
     Represents a RSS/Atom feed item.
     """
+    TYPE="feed"
     @staticmethod
     def to_id(**entry):
         """
