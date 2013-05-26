@@ -7,16 +7,20 @@ class Interface(object):
     """
     Middle ware database interface layer.
     """
+	ENGINES_PATH="engines"
     def __init__(self, engine_name, connection_string):
-        self.database = self.get_database(engine_name, connection_string)
+        self.database = self.get_database(engine_name)
+        self.connection = self.database(connection_string)
         
-    def get_database(self, engine_name, connection_string):
+    def get_database(self, engine_name):
         """
         Sets up database object.
         :param engine_name: the name of the engine model
         :param connection_string: the values used to set up the database engine
         """
-        pass
+        database_name = ".".join([self.ENGINES_PATH, engine_name])
+		database_module = __import__(database_name, globals(), locals(), [])
+		return getattr(database_module, "DATABASE") # engine assigned to DATABASE variable
         
     def get_all_feeds(self):
         """
