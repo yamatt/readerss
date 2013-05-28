@@ -26,7 +26,7 @@ class MongoDB(object):
         :param filters:a dictionary of items to match on.
         """
         if id:
-            filters = {'_id': ObjectId(id)}
+            filters = {'id': id}
         return self.database[collection].find_one(filters)
         
     def get_items(self, collection, **filters):
@@ -45,17 +45,16 @@ class MongoDB(object):
         :param collection:the type of data to retrieve
         :param data:the data to add to the database.
         """
-        o_id = self.database[collection].insert(data)
-        return str(o_id)
+        self.database[collection].insert(data)
         
-    def add_items(self, collection, data):
-        """
-        Similar to `add_item` but uses an array to do a bulk write.
-        :param collection:the type of data to retrieve
-        :param data:an array of data to write.
-        """
-        o_ids = self.database[collection].insert(data)
-        return map(lambda o_id: str(o_id), o_ids)
+    #def add_items(self, collection, data):
+        #"""
+        #Similar to `add_item` but uses an array to do a bulk write.
+        #:param collection:the type of data to retrieve
+        #:param data:an array of data to write.
+        #"""
+        #o_ids = self.database[collection].insert(data)
+        #return map(lambda o_id: str(o_id), o_ids)
         
     def remove_item(self, collection, id=None, **filters):
         """
@@ -65,5 +64,5 @@ class MongoDB(object):
         :param filters:a dictionary of items to match on.
         """
         if id:
-            filters = {'_id': ObjectId(id)}
+            filters = {'id': id}
         self.database[collection].remove(filters)

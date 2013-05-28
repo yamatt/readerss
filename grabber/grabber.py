@@ -5,13 +5,19 @@ from threading import Event
 from Queue import Queue, Full as QueueFull, Empty as QueueEmpty
 from time import sleep
 
+import logging
+
 from robotsparser import RobotsTXTParser
 
 from models import Feed, Entry
 from models.interface import Interface
 
-
 import settings
+
+logging.basicConfig(
+    level=settings.LOGGING_LEVEL,
+    format=settings.LOGGING_FORMAT
+)
 
 def seconds_to_upper_minutes(s):
     """
@@ -131,6 +137,7 @@ class DatabaseWriter(threading.Thread):
                 result = self.database_queue.get_nowait()
                 data.append(result)
             if len(data) > 0:
+                logging.info("Writing {0} bits of information to the database".format(len(data)))
                 for item in data:
                     if item.TYPE == Feed.TYPE:
                         self.database.update_feed(item)
@@ -150,7 +157,7 @@ class FeedGrabManager(object):
     """
     Handles the multiple feed grabber threads.
     """
-    def __init__(self, threads, database_queue):
+    def __init__(self, threads_count, database_queue):
         """
         Sets up the feed grabber threads.
         :param threads:an integer for the number of threads to generate.
@@ -158,44 +165,48 @@ class FeedGrabManager(object):
         writen to the database.
         """
         self.threads = []
-        self.feed_queue = Queue(maxsize=threads) # max size = number of threads means that there will never be any more in the queue than the threads can process
+        self.feed_queue = Queue(maxsize=thread_count) # max size = number of threads means that there will never be any more in the queue than the threads can process
         self.database_queue = database_queue
         self.stop_flag = threading.Event()
-        for i in range(threads):
-            name = "FeedGrab-{0}".format(i)
-            thread = FeedGrab(self.feed_queue, self.database_queue, self.stop_flag)
-            thread.name=name
-            self.threads.append(thread)
+        for i in range(threads_count):
+            self.add_thread()
+        logging.info("Started {0} feed threads".format(len(self.threads))
             
-        def start_threads(self):
-            """
-            Start all threads.
-            """
-            for thread in self.threads:
-                thread.start()
+    def add_thread(self):
+        name = "FeedGrab-{0}".format(len(self.threads))
+        thread = FeedGrab(self.feed_queue, self.database_queue, self.stop_flag)
+        thread.name=name
+        self.threads.append(thread)
             
-        def stop_threads(self):
-            """
-            Set the flag to tell the threads to stop.
-            """
-            self.stop_flag.set()
-            
-        def put_feed(self, feed):
-            """
-            A shorthand function to put feeds on the queue. The queue
-            used here is small so that it doesn't take up too much
-            memory. It also guarentees that the feed will be put on the
-            queue. This queue is kept populated with feed entries so
-            that the threads keep looking for new items.
-            :param feed: the feed to be processed.
-            """
-            inserted = False
-            while not inserted:
-                try:
-                    self.feed_queue.put(feed, True, 60)
-                    inserted = True
-                except QueueFull:
-                    pass
+    def start_threads(self):
+        """
+        Start all threads.
+        """
+        for thread in self.threads:
+            thread.start()
+        
+    def stop_threads(self):
+        """
+        Set the flag to tell the threads to stop.
+        """
+        self.stop_flag.set()
+        
+    def put_feed(self, feed):
+        """
+        A shorthand function to put feeds on the queue. The queue
+        used here is small so that it doesn't take up too much
+        memory. It also guarentees that the feed will be put on the
+        queue. This queue is kept populated with feed entries so
+        that the threads keep looking for new items.
+        :param feed: the feed to be processed.
+        """
+        inserted = False
+        while not inserted:
+            try:
+                self.feed_queue.put(feed, True, 60)
+                inserted = True
+            except QueueFull:
+                pass
 
 class ManageGrabber(object):
     """
@@ -227,6 +238,7 @@ class ManageGrabber(object):
         """
         self.db_thread.start()
         self.grab_manager.start()
+        logging.info("Started threads. Starting feed processors.")
         while not self.stop_flag.is_set():
             for feed in self.database.get_all_feeds():
                 self.grab_manager.put_feed(feed)
