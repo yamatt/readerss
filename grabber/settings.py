@@ -1,7 +1,7 @@
 import logging
 
-DATABASE_ENGINE="mongodb"
-DB_CONNECTION_STRING=""
+DATABASE_ENGINE="Sqlalchemy"
+DB_CONNECTION_STRING="sqlite:///:memory:"
 
 MAX_ACCESS_WAIT=30 # minutes
 MIN_ACCESS_WAIT=3 # minutes
