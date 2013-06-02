@@ -1,0 +1,3 @@
+[submodule "grabber/feedparser"]
+	path = grabber/feedparser
+	url = https://code.google.com/p/feedparser/
