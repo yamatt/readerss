@@ -1,3 +1,3 @@
-[submodule "grabber/feedparser"]
-	path = grabber/feedparser
+[submodule "grabber/feedparser_git"]
+	path = grabber/feedparser_git
 	url = https://code.google.com/p/feedparser/
