@@ -3,6 +3,8 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from json import loads as jsonsload
 
+DATABASE=MongoDB
+
 class MongoDB(BaseDB):
     """
     The monogdb access implementation.
@@ -31,6 +33,3 @@ class MongoDB(BaseDB):
         if id:
             filters = {'id': id}
         self.database[collection].remove(filters)
-
-
-DATABASE=MongoDB

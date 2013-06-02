@@ -23,11 +23,12 @@ class SqlalchemyDB(BaseDB):
         table = table_converter(table)
         if id:
             filters = {'id': id}
-        return session.query(table).filter_by(**filters).first().__dict__
+        return session.query(table).filter_by(**filters).first().__dict__.values()
         
     def get_items(self, table, **filters):
         table = table_converter(table)
-        return session.query(table).filter_by(**filters)
+        rv =  map(lambda item: item.__dict__.values(), self.session.query(table).filter_by(**filters).all())
+        return rv
         
     def add_item(self, table, data):
         item_orm = table_converter(table, data)
