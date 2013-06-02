@@ -1,8 +1,14 @@
-import feedparser # needs to be from git repo
 from hashlib import sha256
 from time import mktime
 from datetime import datetime, timedelta
 import settings
+
+try:
+    import feedparser # needs to be from git repo (https://code.google.com/p/feedparser/)
+except ImportError:
+    import imp
+    feedparser = imp.load_source("feedparser", "feedparser_git/feedparser/feedparser.py")
+    
 
 def hasher(v):
     return sha256(v).hexdigest()
@@ -65,7 +71,7 @@ class Entry(object):
     """
     Represents a RSS/Atom feed item.
     """
-    TYPE="feed"
+    TYPE="entry"
     @staticmethod
     def to_id(**entry):
         """

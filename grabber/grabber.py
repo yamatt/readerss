@@ -4,12 +4,13 @@ import threading
 from threading import Event
 from Queue import Queue, Full as QueueFull, Empty as QueueEmpty
 from time import sleep
+from datetime import timedelta
 
 import logging
 
 from robotsparser import RobotsTXTParser
 
-from models import Feed, Entry
+from models.model import Feed, Entry
 from models.interface import Interface
 
 import settings
@@ -54,6 +55,7 @@ class FeedGrab(threading.Thread):
         max_wait=timedelta(minutes=settings.MAX_ACCESS_WAIT)
         min_wait=timedelta(minutes=settings.MIN_ACCESS_WAIT)
         while not self.stop_flag.is_set():
+            feed = None
             try:
                 # arbritrary timeout to prevent total blocking and lack of exiting
                 feed = self.feed_queue.get(timeout=3)
@@ -103,7 +105,7 @@ class FeedGrab(threading.Thread):
                                         self.database_queue.put(entry)
                                         
                                             
-                except Exception e:
+                except Exception as e:
                     feed.errors+=1
                     self.database_queue.put(feed)
                 
@@ -111,7 +113,7 @@ class DatabaseWriter(threading.Thread):
     """
     This handles database writes from the feed grabber.
     """
-    def __init__(self, database_engine, connection_string):
+    def __init__(self, database_engine, connection_string, stop_flag):
         """
         Set up the connection to the database, the queues and writer
         thread.
@@ -165,27 +167,27 @@ class FeedGrabManager(object):
         writen to the database.
         """
         self.threads = []
-        self.feed_queue = Queue(maxsize=thread_count) # max size = number of threads means that there will never be any more in the queue than the threads can process
+        self.feed_queue = Queue(maxsize=threads_count) # max size = number of threads means that there will never be any more in the queue than the threads can process
         self.database_queue = database_queue
         self.stop_flag = threading.Event()
         for i in range(threads_count):
             self.add_thread()
-        logging.info("Started {0} feed threads".format(len(self.threads))
-            
+        logging.info("Started {0} feed threads".format(len(self.threads)))
+        
     def add_thread(self):
         name = "FeedGrab-{0}".format(len(self.threads))
         thread = FeedGrab(self.feed_queue, self.database_queue, self.stop_flag)
         thread.name=name
         self.threads.append(thread)
             
-    def start_threads(self):
+    def start(self):
         """
         Start all threads.
         """
         for thread in self.threads:
             thread.start()
         
-    def stop_threads(self):
+    def stop(self):
         """
         Set the flag to tell the threads to stop.
         """
@@ -217,17 +219,17 @@ class ManageGrabber(object):
         Sets up the database writer, necessary queues and the feed
         grabber manager.
         """
-        self.db_writer_thread = DatabaseWriter(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING)
-        db_queue = self.db_thread.db_writer_thread
+        self.stop_flag = threading.Event()
+        self.db_writer_thread = DatabaseWriter(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING, self.stop_flag)
+        db_queue = self.db_writer_thread.database_queue
         self.grab_manager = FeedGrabManager(settings.THREADS, db_queue)
         self.database = Interface(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING)
-        self.stop_flag = threading.Event()
         
     def stop(self):
         """
         Stops the threads. Can only be called once start has exited.
         """
-        self.db_thread.stop()
+        self.db_writer_thread.stop()
         self.grab_manager.stop()
         self.stop_flag.set()
         
@@ -236,7 +238,7 @@ class ManageGrabber(object):
         Starts the threads off then grabs feeds from the database and
         puts them on the feed queue so they can be checked for updates.
         """
-        self.db_thread.start()
+        self.db_writer_thread.start()
         self.grab_manager.start()
         logging.info("Started threads. Starting feed processors.")
         while not self.stop_flag.is_set():

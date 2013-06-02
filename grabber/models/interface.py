@@ -7,7 +7,7 @@ class Interface(object):
     """
     Middle ware database interface layer.
     """
-	ENGINES_PATH="engines"
+    ENGINES_PATH="engines"
     def __init__(self, engine_name, connection_string):
         self.database = self.get_database(engine_name)
         self.connection = self.database(connection_string)
@@ -19,15 +19,15 @@ class Interface(object):
         :param connection_string: the values used to set up the database engine
         """
         database_name = ".".join([self.ENGINES_PATH, engine_name])
-		database_module = __import__(database_name, globals(), locals(), [])
-		return getattr(database_module, "DATABASE") # engine assigned to DATABASE variable
+        database_module = __import__(database_name, globals(), locals(), ["DATABASE"])
+        return getattr(database_module, "DATABASE") # engine assigned to DATABASE variable
         
     def get_all_feeds(self):
         """
         Return all the feed items so that they can be checked for new entries.
         TODO: less memory intensive way of doing this.
         """
-        return map(lambda feed: Feed(**feed), self.database.get_items("feed"))
+        return map(lambda feed: Feed(**feed), self.connection.get_items("feed"))
         
     def get_feed(self, feed_id):
         """
@@ -35,13 +35,13 @@ class Interface(object):
         create a Feed object and take the hash from that.
         :param feed_id: the string id of the feed to retrieve.
         """
-        return Feed(self.database.get_item("feeds", feed_id))
+        return Feed(self.connection.get_item("feeds", feed_id))
         
     def update_feed(self, feed, add_entries=False):
         """
         Allows you to add or update a feed object in the database.
         """
-        self.database.add_item("feeds", feed)
+        self.connection.add_item("feeds", feed)
         if add_enrties:
             for entry in feed.entries:
                 self.add_entry(entry)
@@ -53,7 +53,7 @@ class Interface(object):
         take the hash from that.
         :param entry_id: the string id of the feed to retrieve.
         """
-        return Entry.from_database(self.database.get_item("entries", entry_id))
+        return Entry(self.database.get_item("entries", entry_id))
         
     def add_entry(self, entry):
         """
