@@ -1,4 +1,4 @@
-from urllib2.urlparse import urljoin, urlparse
+from urlparse import urljoin, urlparse
 import re
 from fnmatch import fnmatch
 from datetime import timedelta
@@ -55,12 +55,11 @@ class RobotsTXTParser(object):
             if self.USER_AGENT_MATCH.match(l):
                 m = self.USER_AGENT_MATCH.match(l)
                 current_agent = m.groupdict().get("str", "")
-            elif self.CRAWL_DELAY_MATCH.match(l)
-                and user_agent_match(current_agent):
-                    m = self.CRAWL_DELAY_MATCH.match(l)
-                    value = m.groupdict().get("str", "0")
-                    if value.isdigit():
-                        return timedelta(seconds=int(value))
+            elif self.CRAWL_DELAY_MATCH.match(l) and user_agent_match(current_agent):
+                m = self.CRAWL_DELAY_MATCH.match(l)
+                value = m.groupdict().get("str", "0")
+                if value.isdigit():
+                    return timedelta(seconds=int(value))
                     
     def url_acceptable(self, url, strict=False):
         """
@@ -90,18 +89,16 @@ class RobotsTXTParser(object):
             if self.USER_AGENT_MATCH.match(l):
                 m = self.USER_AGENT_MATCH.match(l)
                 current_agent = m.groupdict().get("str", "")
-            elif self.DISALLOW_MATCH.match(l)
-                and user_agent_match(current_agent):
-                    m = self.DISALLOW_MATCH.match(l)
-                    pattern = m.groupdict().get("str", "")
-                    if fnmatch(path, pattern):
-                        return False
-            elif self.ALLOW_MATCH.match(l)
-                and user_agent_match(current_agent):
-                    m = self.ALLOW_MATCH.match(l)
-                    pattern = m.groupdict().get("str", "")
-                    if fnmatch(path, pattern):
-                        return True
+            elif self.DISALLOW_MATCH.match(l) and user_agent_match(current_agent):
+                m = self.DISALLOW_MATCH.match(l)
+                pattern = m.groupdict().get("str", "")
+                if fnmatch(path, pattern):
+                    return False
+            elif self.ALLOW_MATCH.match(l) and user_agent_match(current_agent):
+                m = self.ALLOW_MATCH.match(l)
+                pattern = m.groupdict().get("str", "")
+                if fnmatch(path, pattern):
+                    return True
         if not strict:
             return True
     
