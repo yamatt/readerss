@@ -12,7 +12,7 @@ class RobotsTXTParser(object):
     CRAWL_DELAY_MATCH=re.compile(r"^Crawl-delay: *(?P<str>\w*).*$")
     
     def __init__(self, contents, user_agent=""):
-        self.user_agent = bot_name
+        self.user_agent = user_agent
         self.contents = contents
         
     @classmethod
@@ -23,7 +23,7 @@ class RobotsTXTParser(object):
             for. E.g.: http://example.com/foo/bar.html
         """
         url = urljoin(url, RobotsTXTParser.ROBOTSTXT_PATH)
-        return cls(url, user_agent)
+        return cls.from_file(url, user_agent)
         
     @classmethod
     def from_file(cls, f, user_agent=""):
