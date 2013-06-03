@@ -70,7 +70,7 @@ class FeedGrab(threading.Thread):
                         requested_delay = timedelta(minutes=feed.minimum_wait)
                         requested_next_access = requested_delay + feed.last_accessed
                         if now > requested_next_access:
-                            robotstxt = RobotsTXTParser.from_url(url)
+                            robotstxt = RobotsTXTParser.from_url(url)   # this may get called a lot -- what if no robots.txt?
                             # determine next access from sites robots.txt
                             robots_delay = timedelta(seconds=robotstxt.get_crawl_delay())
                             robots_next_access = robots_delay + feed.last_accessed
@@ -103,8 +103,13 @@ class FeedGrab(threading.Thread):
                                     # write entries
                                     for entry in new_feed.entries:
                                         self.database_queue.put(entry)
-                                        
-                                            
+
+                                else:
+                                    logging.info("Feed '{0}' was rejected due to robots.txt constraints.".format(feed.id))
+                            else:
+                                logging.info("Feed '{0}' discarded due to robots accessed time being too recent.".format(feed.id))
+                        else:
+                            logging.info("Feed '{0}' discarded due to last accessed time being too recent.".format(feed.id))
                 except Exception as e:
                     feed.errors+=1
                     self.database_queue.put(feed)
@@ -252,6 +257,8 @@ if __name__ == "__main__":
         mg.start()
     except KeyboardInterrupt:
         print "Safe exiting."
+    except Exception as e:
+        logging.error("An error caused an exit", e)
     finally:
         mg.stop()
 
