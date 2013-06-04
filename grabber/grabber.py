@@ -20,14 +20,6 @@ logging.basicConfig(
     format=settings.LOGGING_FORMAT
 )
 
-def seconds_to_upper_minutes(s):
-    """
-    Takes a number of seconds and converts it to the number of minutes
-    required to contain that number of seconds.
-    """
-    minutes = s / 60
-    return s if not s % 60 else s + 1
-
 class FeedGrab(threading.Thread):
     """
     Processes feeds to grab new entries from them.
@@ -70,44 +62,11 @@ class FeedGrab(threading.Thread):
                         requested_delay = timedelta(minutes=feed.minimum_wait)
                         requested_next_access = requested_delay + feed.last_accessed
                         if now > requested_next_access:
-                            robotstxt = RobotsTXTParser.from_url(url)   # this may get called a lot -- what if no robots.txt?
-                            # determine next access from sites robots.txt
-                            robots_delay = timedelta(seconds=robotstxt.get_crawl_delay())
-                            robots_next_access = robots_delay + feed.last_accessed
-                            if now > robots_next_access:
-                                # check url is accessible
-                                if robotstxt.url_acceptable(feed.url):
-                                    new_feed = Feed.from_url(feed.url)
-                                    new_feed.last_accessed = now
-                                    new_feed.errors = feed.errors
-                                    # determine minimum wait
-                                    if robots_delay > requested_delay:
-                                        # increase minimum wait to robots delay to the nearest minute up to the max wait
-                                        if robots_delay > max_wait:
-                                            new_feed.minimum_wait = settings.MAX_ACCESS_WAIT
-                                        else:
-                                            robots_minutes = seconds_to_upper_minutes(robots_delay)
-                                            if robots_minutes > settings.MIN_ACCESS_WAIT:
-                                                new_feed.minimum_wait = robots_minutes
-                                            else:
-                                                new_feed.minimum_wait = settings.MIN_ACCESS_WAIT
-                                    elif robots_delay < requested_delay:
-                                        # decrease the minimum wait to robots delay to the nearest upper minute down to the minimum wait
-                                        if robots_delay > min_wait:
-                                            new_feed.minimum_wait = seconds_to_upper_minutes(robots_delay)
-                                        else:
-                                            new_feed.minimum_wait = settings.MIN_ACCESS_WAIT
-                                       
-                                    # write feed
-                                    self.database_queue.put(new_feed)
-                                    # write entries
-                                    for entry in new_feed.entries:
-                                        self.database_queue.put(entry)
-
-                                else:
-                                    logging.info("Feed '{0}' was rejected due to robots.txt constraints.".format(feed.id))
-                            else:
-                                logging.info("Feed '{0}' discarded due to robots accessed time being too recent.".format(feed.id))
+                            # write feed
+                            self.database_queue.put(new_feed)
+                            # write entries
+                            for entry in new_feed.entries:
+                                self.database_queue.put(entry)
                         else:
                             logging.info("Feed '{0}' discarded due to last accessed time being too recent.".format(feed.id))
                 except Exception as e:
