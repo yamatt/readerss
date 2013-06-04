@@ -47,19 +47,19 @@ def table_converter(table, data=None):
     """
     if table == SQLAFeed.TYPE:
         if data:
-            return SQLAFeed(*data.to_database().values())
+            return SQLAFeed(**data)
         else:
             return SQLAFeed
     elif table == SQLAEntry.TYPE:
         if data:
-            return SQLAEntry(*data.to_database().values())
+            return SQLAEntry(**data)
         else:
             return SQLAEntry
     else:
-        raise Exception("Table type not found")
+        raise Exception("Table type not found: {0}".format(table))
     
 
-class SQLAFeed(Base, Feed):
+class SQLAFeed(Feed, Base):
     __tablename__ = Feed.TYPE
     
     id = Column(String, primary_key=True)
@@ -72,8 +72,9 @@ class SQLAFeed(Base, Feed):
     last_accessed = Column(DateTime(timezone=True))
     minimum_wait = Column(Integer)
     errors = Column(Integer)
+    
 
-class SQLAEntry(Base, Entry):
+class SQLAEntry(Entry, Base):
     __tablename__ = Entry.TYPE
     
     id = Column(String, primary_key=True)

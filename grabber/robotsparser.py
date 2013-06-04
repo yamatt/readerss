@@ -1,4 +1,5 @@
 from urlparse import urljoin, urlparse
+import urllib2
 import re
 from fnmatch import fnmatch
 from datetime import timedelta
@@ -23,7 +24,9 @@ class RobotsTXTParser(object):
             for. E.g.: http://example.com/foo/bar.html
         """
         url = urljoin(url, RobotsTXTParser.ROBOTSTXT_PATH)
-        return cls.from_file(url, user_agent)
+        req = urllib2.Request(url)
+        response = urllib2.urlopen(req)
+        return cls.from_file(response, user_agent)
         
     @classmethod
     def from_file(cls, f, user_agent=""):
@@ -55,7 +58,7 @@ class RobotsTXTParser(object):
             if self.USER_AGENT_MATCH.match(l):
                 m = self.USER_AGENT_MATCH.match(l)
                 current_agent = m.groupdict().get("str", "")
-            elif self.CRAWL_DELAY_MATCH.match(l) and user_agent_match(current_agent):
+            elif self.CRAWL_DELAY_MATCH.match(l) and self.user_agent_match(current_agent):
                 m = self.CRAWL_DELAY_MATCH.match(l)
                 value = m.groupdict().get("str", "0")
                 if value.isdigit():
@@ -89,12 +92,12 @@ class RobotsTXTParser(object):
             if self.USER_AGENT_MATCH.match(l):
                 m = self.USER_AGENT_MATCH.match(l)
                 current_agent = m.groupdict().get("str", "")
-            elif self.DISALLOW_MATCH.match(l) and user_agent_match(current_agent):
+            elif self.DISALLOW_MATCH.match(l) and self.user_agent_match(current_agent):
                 m = self.DISALLOW_MATCH.match(l)
                 pattern = m.groupdict().get("str", "")
                 if fnmatch(path, pattern):
                     return False
-            elif self.ALLOW_MATCH.match(l) and user_agent_match(current_agent):
+            elif self.ALLOW_MATCH.match(l) and self.user_agent_match(current_agent):
                 m = self.ALLOW_MATCH.match(l)
                 pattern = m.groupdict().get("str", "")
                 if fnmatch(path, pattern):

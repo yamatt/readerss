@@ -25,13 +25,19 @@ class Feed(object):
         :param url: url for RSS/Atom feed.
         """
         feed = feedparser.parse(url).feed
+        updated = feed.get("updated_parsed")
+        if updated:
+            updated = datetime.fromtimestamp(mktime(feed.updated_parsed))
+        published = feed.get("feed.published_parsed")
+        if published:
+            published=datetime.fromtimestamp(mktime(feed.published_parsed))
         return cls(
             url=url,
             title=feed.title,
             subtitle=feed.subtitle,
-            updated=datetime.fromtimestamp(mktime(feed.updated_parsed)),
-            published=datetime.fromtimestamp(mktime(feed.published_parsed)),
-            link=feed.link
+            updated=updated,
+            published=published,
+            link=feed.link # does nuffink
         )
         
     def __init__(self, **feed):
