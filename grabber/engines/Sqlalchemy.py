@@ -27,12 +27,13 @@ class SqlalchemyDB(BaseDB):
         
     def get_items(self, table, **filters):
         table = table_converter(table)
-        rv =  map(lambda item: item.__dict__.values(), self.session.query(table).filter_by(**filters).all())
+        rv =  map(lambda item: item.__dict__, self.session.query(table).filter_by(**filters).all())
         return rv
         
     def add_item(self, table, data):
         item_orm = table_converter(table, data)
-        self.session.add(item_orm)
+        merged_item = self.session.merge(item_orm)
+        self.session.add(merged_item)
         self.session.commit()
         
     def remove_item(self, table, id=None, **filters):
