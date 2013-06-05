@@ -4,7 +4,7 @@ import threading
 from threading import Event
 from Queue import Queue, Full as QueueFull, Empty as QueueEmpty
 from time import sleep
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 import logging
 
@@ -44,6 +44,7 @@ class FeedGrab(threading.Thread):
         it needs to update first. Check it is allowed to update from the
         site's robots.txt and then pulls in the new feed and entries.
         """
+        database = Interface(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING)
         max_wait=timedelta(minutes=settings.MAX_ACCESS_WAIT)
         min_wait=timedelta(minutes=settings.MIN_ACCESS_WAIT)
         while not self.stop_flag.is_set():
@@ -56,22 +57,28 @@ class FeedGrab(threading.Thread):
             if feed:
                 try:
                     # worth checking yet?
+                    now = datetime.now()
                     if feed.last_accessed:
-                        now = datetime.now()
-                        # determine next access from minimum wait time
                         requested_delay = timedelta(minutes=feed.minimum_wait)
                         requested_next_access = requested_delay + feed.last_accessed
-                        if now > requested_next_access:
-                            # write feed
-                            self.database_queue.put(new_feed)
-                            # write entries
-                            for entry in new_feed.entries:
-                                self.database_queue.put(entry)
-                        else:
-                            logging.info("Feed '{0}' discarded due to last accessed time being too recent.".format(feed.id))
+                    if feed.last_accessed is None or now > requested_next_access:
+                        new_feed = Feed.from_url(feed.url)
+                        new_feed.last_accessed = now
+                        new_feed.errors = feed.errors
+                        # write feed
+                        logging.info("Looking to write {0} entries.".format(len(new_feed.entries)))
+                        database.update_feed(new_feed, add_entries=True)
+                        logging.info("Finished writing.")
+                        # write entries
+                        # just send the entries to the database.rather than faffing around determining if it has been updated or not
+                        # TODO: detect duplicate ids and create a new separate entry
+                        #logging.info("Looking to write {0} entries.".format(len(new_feed.entries)))
+                        #for entry in new_feed.entries:
+                        #    self.database_queue.put(entry)
                 except Exception as e:
                     feed.errors+=1
                     self.database_queue.put(feed)
+                    logging.error("An error for feed id '{0}' occured: {1}".format(feed.id, e))
                 
 class DatabaseWriter(threading.Thread):
     """
@@ -103,7 +110,7 @@ class DatabaseWriter(threading.Thread):
                 result = self.database_queue.get_nowait()
                 data.append(result)
             if len(data) > 0:
-                logging.info("Writing {0} bits of information to the database".format(len(data)))
+                logging.info("Writing {0} items to the database".format(len(data)))
                 for item in data:
                     if item.TYPE == Feed.TYPE:
                         self.database.update_feed(item)
@@ -217,7 +224,7 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print "Safe exiting."
     except Exception as e:
-        logging.error("An error caused an exit", e)
+        logging.error("An error caused an exit: {0}".format(e))
     finally:
         mg.stop()
 
