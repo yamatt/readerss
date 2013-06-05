@@ -27,7 +27,8 @@ class Interface(object):
         Return all the feed items so that they can be checked for new entries.
         TODO: less memory intensive way of doing this.
         """
-        return map(lambda feed: Feed(**feed), self.connection.get_items("feed"))
+        items = self.connection.get_items(Feed.TYPE)
+        return map(lambda feed: Feed(**feed), items)
         
     def get_feed(self, feed_id):
         """
@@ -70,7 +71,7 @@ class Interface(object):
         if self.get_feed(entry.feed_id):
             # look for previous entries
             self.database.add_item(Entry.TYPE, entry.to_database())
-            # new entries table
-            # entry state table
+            # new entries table for when a new entry is added
+            # entry state table for marking them as unread
         else:
             raise DatabaseValidation("Feed is not valid for entry.")
