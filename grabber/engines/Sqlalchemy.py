@@ -20,27 +20,34 @@ class SqlalchemyDB(BaseDB):
         self.session = Session()
         
     def get_item(self, table, id=None, **filters):
-        table = table_converter(table)
+        table = item_converter(table)
         if id:
             filters = {'id': id}
-        return session.query(table).filter_by(**filters).first().__dict__.values()
+        return self.session.query(table).filter_by(**filters).first().__dict__
         
     def get_items(self, table, **filters):
-        table = table_converter(table)
+        table = item_converter(table)
         rv =  map(lambda item: item.__dict__, self.session.query(table).filter_by(**filters).all())
         return rv
         
     def add_item(self, table, data):
-        item_orm = table_converter(table, data)
+        item_orm = item_converter(table, data)
         merged_item = self.session.merge(item_orm)
         self.session.add(merged_item)
+        self.session.commit()
+        
+    def add_items(self, table, datas):
+        items_orm = map(lambda item: item_converter(table, item), datas)
+        merged_items = map(lambda item: self.session.merge(item), items_orm)
+        for merged_item in merged_items:
+            self.session.add(merged_item)
         self.session.commit()
         
     def remove_item(self, table, id=None, **filters):
         item = self.get_item(table, id, **filters)
         self.session.delete(item)
         
-def table_converter(table, data=None):
+def item_converter(table, data=None):
     """
     Works out what model to use for the table and sorts out the data
     :param table:the table name

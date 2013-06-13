@@ -1,9 +1,10 @@
 #!/usr/bin/env python2
-
 import unittest
 
 testmodules = [
-    'tests.test_robotsparser'
+    'tests.test_robotsparser',
+    'tests.test_grabber',
+    'tests.test_model',
 ]
 
 suite = unittest.TestSuite()
@@ -16,7 +17,7 @@ for test in testmodules:
         suite.addTest(suitefn())
     except (ImportError, AttributeError):
         # else, just load all the test cases from the module.
-        suite.addTest(unittest.defaultTestLoader.loadTestsFromName(t))
+        suite.addTest(unittest.defaultTestLoader.loadTestsFromName(test))
 
 if __name__=="__main__":
     unittest.TextTestRunner().run(suite)

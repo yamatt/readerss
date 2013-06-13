@@ -24,7 +24,7 @@ class FeedGrab(threading.Thread):
     """
     Processes feeds to grab new entries from them.
     """
-    def __init__(self, feed_queue, database_queue, stop_flag):
+    def __init__(self, feed_queue, database_engine, connection_string, stop_flag):
         """
         Sets up the thread.
         TODO: check these threading items need to be passed in here or
@@ -35,7 +35,7 @@ class FeedGrab(threading.Thread):
         """
         super(FeedGrab, self).__init__()
         self.feed_queue = feed_queue
-        self.database_queue = database_queue
+        self.database = Interface(database_engine, connection_string)
         self.stop_flag = stop_flag
         
     def run(self):
@@ -44,93 +44,38 @@ class FeedGrab(threading.Thread):
         it needs to update first. Check it is allowed to update from the
         site's robots.txt and then pulls in the new feed and entries.
         """
-        database = Interface(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING)
         max_wait=timedelta(minutes=settings.MAX_ACCESS_WAIT)
         min_wait=timedelta(minutes=settings.MIN_ACCESS_WAIT)
         while not self.stop_flag.is_set():
-            feed = None
             try:
                 # arbritrary timeout to prevent total blocking and lack of exiting
-                feed = self.feed_queue.get(timeout=3)
+                feed_id = self.feed_queue.get(timeout=3)
+                if feed_id:
+                    feed = self.database.get_feed(feed_id)
+                    self.add_latest(feed)
             except QueueEmpty:
                 pass
-            if feed:
-                try:
-                    # worth checking yet?
-                    now = datetime.now()
-                    if feed.last_accessed:
-                        requested_delay = timedelta(minutes=feed.minimum_wait)
-                        requested_next_access = requested_delay + feed.last_accessed
-                    if feed.last_accessed is None or now > requested_next_access:
-                        new_feed = Feed.from_url(feed.url)
-                        new_feed.last_accessed = now
-                        new_feed.errors = feed.errors
-                        # write feed
-                        logging.info("Looking to write {0} entries.".format(len(new_feed.entries)))
-                        database.update_feed(new_feed, add_entries=True)
-                        logging.info("Finished writing.")
-                        # write entries
-                        # just send the entries to the database.rather than faffing around determining if it has been updated or not
-                        # TODO: detect duplicate ids and create a new separate entry
-                        #logging.info("Looking to write {0} entries.".format(len(new_feed.entries)))
-                        #for entry in new_feed.entries:
-                        #    self.database_queue.put(entry)
-                except Exception as e:
-                    feed.errors+=1
-                    self.database_queue.put(feed)
-                    logging.error("An error for feed id '{0}' occured: {1}".format(feed.id, e))
-                
-class DatabaseWriter(threading.Thread):
-    """
-    This handles database writes from the feed grabber.
-    """
-    def __init__(self, database_engine, connection_string, stop_flag):
-        """
-        Set up the connection to the database, the queues and writer
-        thread.
-        :param database_engine: the name of the engine to use.
-        :param connection_string: the options for the database engine
-        """
-        super(DatabaseWriter, self).__init__(name=self.__class__.__name__)
-        self.database = Interface(database_engine, connection_string)
-        self.database_queue = Queue()
-        self.stop_flag = stop_flag
-        
-    def run(self):
-        """
-        Writes messages in batches from the queue. It sleeps 3 seconds
-        for messages to build up in the queue before writing so that a
-        lot of  messages can be pulled out and written as a bulk write.
-        We don't mind it being too lossy here because the at the next
-        iteration anything missing will be pulled in again.
-        """
-        while not self.stop_flag.is_set():
-            data = []
-            while not self.database_queue.empty():
-                result = self.database_queue.get_nowait()
-                data.append(result)
-            if len(data) > 0:
-                logging.info("Writing {0} items to the database".format(len(data)))
-                for item in data:
-                    if item.TYPE == Feed.TYPE:
-                        self.database.update_feed(item)
-                    elif item.TYPE == Entry.TYPE:
-                        self.database.add_entry(item)
-                
-            # waits 3 seconds for the queue to be populated
-            sleep(3)
     
-    def stop(self):
-        """
-        Tells the thread to die.
-        """
-        self.stop_flag.set()
+    def add_latest(self, feed):
+        # worth checking yet?
+        now = datetime.now()
+        if feed.can_check():
+            new_feed = Feed.from_url(feed.url)
+            new_feed.last_accessed = now
+            new_feed.errors = feed.errors
+            # write feed
+            self.database.update_feed(new_feed)
+            # write entries
+            # just send the entries to the database.rather than faffing around determining if it has been updated or not
+            # TODO: detect duplicate ids and create a new separate entry
+            for entry in new_feed.entries:
+                self.database.add_entry(entry)
                             
 class FeedGrabManager(object):
     """
     Handles the multiple feed grabber threads.
     """
-    def __init__(self, threads_count, database_queue):
+    def __init__(self, threads_count):
         """
         Sets up the feed grabber threads.
         :param threads:an integer for the number of threads to generate.
@@ -139,7 +84,6 @@ class FeedGrabManager(object):
         """
         self.threads = []
         self.feed_queue = Queue(maxsize=threads_count) # max size = number of threads means that there will never be any more in the queue than the threads can process
-        self.database_queue = database_queue
         self.stop_flag = threading.Event()
         for i in range(threads_count):
             self.add_thread()
@@ -147,7 +91,7 @@ class FeedGrabManager(object):
         
     def add_thread(self):
         name = "FeedGrab-{0}".format(len(self.threads))
-        thread = FeedGrab(self.feed_queue, self.database_queue, self.stop_flag)
+        thread = FeedGrab(self.feed_queue, settings.DATABASE_ENGINE, settings.DATABASE_CONNECTION_STRING, self.stop_flag)
         thread.name=name
         self.threads.append(thread)
             
@@ -191,16 +135,13 @@ class ManageGrabber(object):
         grabber manager.
         """
         self.stop_flag = threading.Event()
-        self.db_writer_thread = DatabaseWriter(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING, self.stop_flag)
-        db_queue = self.db_writer_thread.database_queue
-        self.grab_manager = FeedGrabManager(settings.THREADS, db_queue)
-        self.database = Interface(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING)
+        self.grab_manager = FeedGrabManager(settings.THREADS)
+        self.database = Interface(settings.DATABASE_ENGINE, settings.DATABASE_CONNECTION_STRING)
         
     def stop(self):
         """
         Stops the threads. Can only be called once start has exited.
         """
-        self.db_writer_thread.stop()
         self.grab_manager.stop()
         self.stop_flag.set()
         
@@ -209,12 +150,11 @@ class ManageGrabber(object):
         Starts the threads off then grabs feeds from the database and
         puts them on the feed queue so they can be checked for updates.
         """
-        self.db_writer_thread.start()
         self.grab_manager.start()
         logging.info("Started threads. Starting feed processors.")
         while not self.stop_flag.is_set():
             for feed in self.database.get_all_feeds():
-                self.grab_manager.put_feed(feed)
+                self.grab_manager.put_feed(feed.id)
         
 if __name__ == "__main__":
     mg = ManageGrabber()

@@ -36,7 +36,8 @@ class Interface(object):
         create a Feed object and take the hash from that.
         :param feed_id: the string id of the feed to retrieve.
         """
-        return Feed(self.connection.get_item(Feed.TYPE, feed_id))
+        item = self.connection.get_item(Feed.TYPE, feed_id)
+        return Feed(**item)
         
     def add_feed(self, feed):
         """
@@ -60,7 +61,7 @@ class Interface(object):
         take the hash from that.
         :param entry_id: the string id of the feed to retrieve.
         """
-        return Entry(self.database.get_item(Entry.TYPE, entry_id))
+        return Entry(self.connection.get_item(Entry.TYPE, entry_id))
         
     def add_entry(self, entry):
         """
@@ -70,8 +71,14 @@ class Interface(object):
         """
         if self.get_feed(entry.feed_id):
             # look for previous entries
-            self.database.add_item(Entry.TYPE, entry.to_database())
+            self.connection.add_item(Entry.TYPE, entry.to_database())
             # new entries table for when a new entry is added
             # entry state table for marking them as unread
+        else:
+            raise DatabaseValidation("Feed is not valid for entry.")
+            
+    def add_entries(self, entries):
+        if all(lambda entry: self.get_feed(entry.feed_id):
+            self.connection.add_items(entries[0].TYPE, map(lambda entry: entry.to_database(), entries)
         else:
             raise DatabaseValidation("Feed is not valid for entry.")

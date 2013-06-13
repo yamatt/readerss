@@ -5,11 +5,13 @@ import settings
 
 try:
     import feedparser # needs to be from git repo (https://code.google.com/p/feedparser/)
-except ImportError:
+except ImportError as e:
     import imp
-    feedparser = imp.load_source("feedparser", "feedparser_git/feedparser/feedparser.py")
-    
-
+    try:
+        feedparser = imp.load_source("feedparser", "feedparser_git/feedparser/feedparser.py")
+    except ImportError as e:
+        raise RuntimeError("No feedparser module found. Please install one or use git submodule update --init to clone the sub modules")
+        
 def hasher(v):
     return sha256(v).hexdigest()
 
@@ -17,6 +19,7 @@ class Feed(object):
     """
     Represents a RSS/Atom feed.
     """
+    
     TYPE="feed"
     @classmethod
     def from_url(cls, url):
@@ -24,7 +27,9 @@ class Feed(object):
         Creates this feed object from a given url.
         :param url: url for RSS/Atom feed.
         """
-        feed = feedparser.parse(url).feed
+        fp = feedparser.parse(url)
+        feed = fp.get("feed")
+        entries = fp.get("entries", [])
         updated = feed.get("updated_parsed")
         if updated:
             updated = datetime.fromtimestamp(mktime(feed.updated_parsed))
@@ -37,7 +42,8 @@ class Feed(object):
             subtitle=feed.subtitle,
             updated=updated,
             published=published,
-            link=feed.link # does nuffink
+            link=feed.link,
+            entries=entries
         )
         
     def __init__(self, **feed):
@@ -56,14 +62,32 @@ class Feed(object):
         self.minimum_wait = feed.get("minimum_wait", settings.MIN_ACCESS_WAIT)
         self.errors = feed.get("error", 0)
         
-        self.entries = map(lambda entry: Entry(
-            feed_id=self.hashed_id,
-            title=entry.title,
-            summary=entry.summary,
-            link=entry.link,
-            updated=datetime.fromtimestamp(mktime(entry.updated_parsed)),
-            published=datetime.fromtimestamp(mktime(entry.published_parsed)),
-        ), feed.get("entries", []))
+        self.entries = []
+        for entry in feed.get("entries", []):
+            updated = None
+            if hasattr(entry, "updated_parsed"):
+                updated=datetime.fromtimestamp(mktime(entry.updated_parsed))
+            published = None
+            if hasattr(entry, "published_parsed"):
+                published=datetime.fromtimestamp(mktime(entry.published_parsed))
+            parsed_entry = Entry(
+                feed_id=self.id,
+                title=entry.title,
+                summary=entry.summary,
+                link=entry.link,
+                updated=updated,
+                published=published,
+            )
+            self.entries.append(parsed_entry)
+        
+    def can_check(self):
+        if not self.last_accessed:
+            return True
+        else:
+            next_access = self.last_accessed + timedelta(minutes=self.minimum_wait)
+            if datetime.now() > next_access:
+                return True
+                
         
     def to_database(self):
         """
@@ -84,7 +108,7 @@ class Entry(object):
         Generates the unique id for this item based upon it's attributes.
         :param entry:a dictionary of entry items.
         """
-        if entry.guidislink:
+        if entry.get("guidislink") and entry.get("link"):
             return entry.get("link")
         else:
             if entry.get("id"):
@@ -112,10 +136,16 @@ class Entry(object):
         """
         return (self.id == other.id)
         
+    def compare_source(self, other):
+        """
+        Used like eq to compare if the entries also came from the same source
+        """
+        return self.__eq__(other) and self.feed_id == other.feed_id
+        
     def to_database(self):
         """
         Returns database representation of object.
         """
         d = self.__dict__
-        d['id'] = hasher(self.to_id(self))
+        d['id'] = hasher(self.to_id(**d))
         return d

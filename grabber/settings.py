@@ -1,7 +1,7 @@
 import logging
 
 DATABASE_ENGINE="Sqlalchemy"
-DB_CONNECTION_STRING="sqlite:///grabber.db"
+DATABASE_CONNECTION_STRING="sqlite:///grabber.db"
 
 MAX_ACCESS_WAIT=30 # minutes
 MIN_ACCESS_WAIT=3 # minutes
