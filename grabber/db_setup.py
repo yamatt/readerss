@@ -2,7 +2,7 @@
 from models.interface import Interface
 import settings
 
-db = Interface(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING)
+db = Interface(settings.DATABASE_ENGINE, settings.DATABASE_CONNECTION_STRING)
 
 def build_tables():
     db.connection.setup_database()

@@ -6,7 +6,7 @@ import settings
 from models.model import Feed, Entry
 from helpers import seconds_to_upper_minutes
 
-db = Interface(settings.DATABASE_ENGINE, settings.DB_CONNECTION_STRING)
+db = Interface(settings.DATABASE_ENGINE, settings.DATABASE_CONNECTION_STRING)
 
 if __name__ == "__main__":
     for feed in db.get_all_feeds():
