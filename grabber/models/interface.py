@@ -78,7 +78,7 @@ class Interface(object):
             raise DatabaseValidation("Feed is not valid for entry.")
             
     def add_entries(self, entries):
-        if all(lambda entry: self.get_feed(entry.feed_id):
-            self.connection.add_items(entries[0].TYPE, map(lambda entry: entry.to_database(), entries)
+        if all(lambda entry: self.get_feed(entry.feed_id)):
+            self.connection.add_items(entries[0].TYPE, map(lambda entry: entry.to_database(), entries))
         else:
             raise DatabaseValidation("Feed is not valid for entry.")
