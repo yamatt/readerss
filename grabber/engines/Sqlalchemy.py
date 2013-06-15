@@ -86,7 +86,7 @@ class SQLAEntry(Entry, Base):
     __tablename__ = Entry.TYPE
     
     id = Column(String, primary_key=True)
-    feed_id = Column(String) # needs relationship setting up
+    feed_id = Column(String, nullable=False) # needs relationship setting up
     title=Column(String)
     summary=Column(String)
     link=Column(String)
