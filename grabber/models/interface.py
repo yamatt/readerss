@@ -61,7 +61,7 @@ class Interface(object):
         take the hash from that.
         :param entry_id: the string id of the feed to retrieve.
         """
-        return Entry(self.connection.get_item(Entry.TYPE, entry_id))
+        return Entry(**self.connection.get_item(Entry.TYPE, entry_id))
         
     def add_entry(self, entry):
         """
