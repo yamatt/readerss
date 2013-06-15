@@ -145,22 +145,21 @@ class ManageGrabber(object):
         self.grab_manager.stop()
         self.stop_flag.set()
         
-    def start(self):
+    def run(self):
         """
         Starts the threads off then grabs feeds from the database and
         puts them on the feed queue so they can be checked for updates.
         """
         self.grab_manager.start()
         logging.info("Started threads. Starting feed processors.")
-        while not self.stop_flag.is_set():
-            for feed in self.database.get_all_feeds():
-                self.grab_manager.put_feed(feed.id)
+        for feed in self.database.get_all_feeds():
+            self.grab_manager.put_feed(feed.id)
         
 if __name__ == "__main__":
     mg = ManageGrabber()
     try:
         print "Starting. Press Ctrl+C to exit"
-        mg.start()
+        mg.run()
     except KeyboardInterrupt:
         print "Safe exiting."
     except Exception as e:
