@@ -68,6 +68,7 @@ class FeedGrab(threading.Thread):
             # write entries
             # just send the entries to the database.rather than faffing around determining if it has been updated or not
             # TODO: detect duplicate ids and create a new separate entry
+            logging.info("Adding {0} entries to database.".format(len(new_feed.entries)))
             for entry in new_feed.entries:
                 self.database.add_entry(entry)
                             
