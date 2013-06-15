@@ -51,8 +51,8 @@ class Feed(object):
         Creates the Feed object from raw data.
         :param feed:a dictionary of possible feed items.
         """
-        self.id = feed.get("id")
         self.url = feed.get("url")
+        self.id = hasher(self.url)
         self.title = feed.get("title")
         self.subtitle = feed.get("subtitle")
         self.updated = feed.get("updated")
@@ -109,12 +109,13 @@ class Entry(object):
         :param entry:a dictionary of entry items.
         """
         if entry.get("guidislink") and entry.get("link"):
-            return entry.get("link")
+            # guid value?
+            return "".join([entry.get("link"), entry.get("feed_id")])
         else:
-            if entry.get("id"):
-                return entry["id"]
+            if entry.get("published"):
+                return "".join([entry.get("title"), entry.get("published").isoformat(), entry.get("feed_id")])
             else:
-                return "{0}{1}".format(entry.get("title"), entry.get("published"))
+                return "".join([entry.get("title"), entry.get("feed_id")])
                 
     def __init__(self, **entry):
         """
