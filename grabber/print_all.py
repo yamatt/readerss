@@ -13,13 +13,13 @@ if __name__ == "__main__":
         print u"Feed: {0}".format(feed.title)
         entries = db.connection.get_items(Entry.TYPE, feed_id=feed.id)
         if len(entries):
-            for entry_id in entries:
-                entry = db.get_entry(entry_id)
-                print u" - {0}".format(entry.id)
+            for entry in entries:
+                entry = db.get_entry(entry['id'])   # cheating here should really convert to Entry object but meh
+                print u" - {0}".format(entry.title)
         else:
             print u"   No entries found"
             
     all_feed = db.connection.get_items(Feed.TYPE)
     all_entries = db.connection.get_items(Entry.TYPE)
     print "There were {0} feeds and {1} entries".format(len(all_feed), len(all_entries))
-        
+    
