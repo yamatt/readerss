@@ -13,7 +13,7 @@ except ImportError as e:
         raise RuntimeError("No feedparser module found. Please install one or use git submodule update --init to clone the sub modules")
         
 def hasher(v):
-    return sha256(v).hexdigest()
+    return sha256(v.encode("utf-8")).hexdigest()
 
 class Feed(object):
     """
