@@ -109,6 +109,13 @@ class FeedGrabManager(object):
         """
         self.stop_flag.set()
         
+    def wait(self):
+        """
+        Waits for all threads to complete.
+        """
+        for thread in self.threads:
+            thread.join()
+        
     def put_feed(self, feed):
         """
         A shorthand function to put feeds on the queue. The queue
@@ -155,6 +162,7 @@ class ManageGrabber(object):
         logging.info("Started threads. Starting feed processors.")
         for feed in self.database.get_all_feeds():
             self.grab_manager.put_feed(feed.id)
+        self.grab_manager.wait()
         
 if __name__ == "__main__":
     mg = ManageGrabber()
